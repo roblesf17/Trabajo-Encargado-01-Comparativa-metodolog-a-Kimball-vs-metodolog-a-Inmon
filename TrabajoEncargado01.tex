@@ -131,6 +131,29 @@ El Modelo de Datos del Data Warehouse. Los modelos anteriores nos deberán entre
 			\end{figure}
 
 La arquitectura que plantea Bill Inmon consta de las siguientes partes: \cite{robles1}
+
+\begin{itemize}
+		\item Fuente de la Información: Inicia el proceso de creación de un DW, conociendo la información que se necesita de todas las herramientas de las que se tengan acceso, ir a las necesidades de información que se necesitan con la finalidad de un resultado para crear un DW.
+
+		\item Data Warehouse: La necesidad de normalizar toda la información extraída para ser almacenada en un DW, los cuales serán procesados y consultados por un DM.
+		\item Data Marts: Se crean un subconjunto de los datos de un DW con el objetivo de responder a un determinado análisis o necesidad de una población, de un departamento en específico.
+		\item Explotación de los datos: Se refiere a la manera de presentación de la información para ser consultada y analizada por las áreas. En cuanto a la arquitectura interna de un DW, Bill Inmon considera las siguientes características:
+
+			\begin{itemize}
+				\item Normalización: el DW debe ser basado y diseñado, conforme al diseño de las bases de datos transaccionales con las que se esté interactuando.
+				\item Tercera Forma normal: la prioridad es que el modelo de datos esté construido en TFN con lo cual se tenga mayor relación entre los objetos de la base de datos.
+			\end{itemize}
+
+\end{itemize}
+
+\subsection{La estructura del DataWarehouse}	
+En cuanto a la estructura interna del DataWarehouse, para Inmon la prioridad es que el modelo de datos esté construido en tercera forma normal. Por dar una breve explicación de lo que esto significa, el proceso de normalización consiste en aplicar una serie de reglas o normas a la hora de establecer las relaciones entre los diferentes objetos dentro de la base de datos. Con este proceso de normalización se consiguen muchos beneficios, como evitar la redundancia de los datos, mantener su integridad referencial, facilitar el mantenimiento de las tablas y disminuir el tamaño de la base de datos. Sin embargo, a diferencia de los DataWarehouse desnormalizados, las consultas exigen el empleo de queries mucho más complejas, lo que dificulta el análisis directo de la información y el uso de las herramientas de reporting. De ahí, la necesidad de construir los DataMarts que, como ya comenté, están basados en modelos dimensionales de estrella o copo de nieve, diseños fácilmente explotables por estas herramientas de análisis de datos.\cite{aquino}
+
+			\begin{figure}[htb]
+				\begin{center}
+					\includegraphics[width=9cm]{./IMAGENES/imgleydi3}
+				\end{center}
+			\end{figure}
 %-------------------------------------------------
 \subsection{METODOLOGIA SEGUN KIMBALL}	
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
