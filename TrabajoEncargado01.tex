@@ -55,15 +55,28 @@ En este breve artículo intentaremos brindar una explicación general de dos de 
 %-----------------------------------------------------------------
 \section{Objetivos}\label{sec:2}
 \subsection{General:}
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Dar una visión clara de BI, desde las perspectivas de los autores que sentaron las bases que son Ralph Kimball y Bill Inmon, para la mejora de las estrategias del negocio al que se desee implementar las herramientas de BI.
 \subsection{Específicos:}
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+ Describir las metodologías propuestas por los principales autores de BI desde las perspectivas de sus creadores Ralph Kimball y Bill Inmon.
+
 
 %-----------------------------------------------------------------
 \section {Marco Teórico}
 
 \subsection{METODOLOGIA SEGUN INMON}	
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Un almacén de datos (data warehouse, DW) según Inmon es una colección de datos orientada a un determinado ámbito (empresa, organización, etc.), integrado, no volátil y variable en el tiempo, que ayuda a la toma de decisiones en la entidad en la que se utiliza. Se trata, sobre todo, de un historial completo de la organización, más allá de la información transaccional y operacional, almacenado en una base de datos diseñada para favorecer el análisis y la divulgación eficiente de datos (especialmente con herramientas OLAP, de procesamiento analítico en línea).
+
+Consta de las siguientes características:
+\begin{itemize}
+		\item \textbf{Orientado a temas:} Los datos en la base de datos están organizados de manera que todos los elementos de datos relativos al mismo evento u objeto del mundo real queden unidos entre sí.
+		\item \textbf{Integrado:} La base de datos contiene los datos de todos los sistemas operacionales de la organización, y dichos datos deben ser consistentes. 
+		\item \textbf{No volátil:} La información no se modifica ni se elimina, una vez almacenado un dato, éste se convierte en información de sólo lectura, y se 	mantiene para futuras consultas.
+		\item \textbf{Variante en el tiempo:}Los cambios producidos en los datos a lo largo del tiempo quedan registrados para que los informes que se puedan generar reflejen esas variaciones.
+
+\end{itemize}
+
+
+El enfoque Inmon tambien se referencia normalmente como Top-down. Los datos son extraidos de los sistemas operacionales por los procesos ETL y cargados en las areas de stage, donde son validados y consolidados en el DW corporativo, donde ademas existen los llamados metadatos que documentan de una forma clara y precisa el contenido del DW. Una vez realizado este proceso, los procesos de refresco de los Data Mart departamentales obtienen la información de el, y con las consiguientes transformaciones, organizan los datos en las estructuras particulares requeridas por cada uno de ellos, refrescando su contenido.
 
 
 %-------------------------------------------------
