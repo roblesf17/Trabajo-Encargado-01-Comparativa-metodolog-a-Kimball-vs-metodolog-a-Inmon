@@ -243,7 +243,53 @@ El proceso iterativo consiste en cuatro pasos:
 
 %-------------------------------------------------
 \subsection{IMPLEMENTACIONES DE KIMBALL}
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+
+Implementación Datawarehouse con Metodología Kimball
+La inteligencia de negocios (BI) es un conjunto de metodologías, aplicaciones y tecnologías que aporta a empresas y organizaciones información privilegiada y debidamente estructurada, que sirve de soporte a la toma de decisiones.
+
+Permite obtener datos relacionados con las alternativas de ingreso a nuevos mercados, ofertas de productos, eliminación de islas de información, controles financieros, optimización de costos, planificación de la producción , análisis de perfiles de clientes, rentabilidad de un producto, etc., para analizarlos y convertirlos en conocimiento.
+
+En la práctica, la inteligencia de negocios es un factor determinante para el éxito y su implementación  no sería nada fácil, si no contáramos con un instrumento como la Metodología Kimball, para la construcción de un almacén de datos (Datawarehouse)  circunscrito al ámbito de la empresa, de manera integrada y permanente (pero variable) en el tiempo.
+
+Producto de nuestra experiencia en el diseño de Datamart (base de datos departamentales) para un sistema de datawarehouse basado en la Metodología Kimball, hemos rescatado y exponemos en el  siguiente artículo algunos apuntes y sugerencias que consideramos de relevancia para aquellos que deseen implementar o explorar soluciones de esta naturaleza:
+
+\begin{itemize}
+	\item Una vez seleccionado el proceso al que se va a diseñar una solución OLAP (base de datos orientada al procesamiento analítico) es necesario efectuar un análisis y crear un diagrama OLTP (base de datos orientada al procesamiento de transacciones) de cada modelo implicado.
+    \item Identificar correctamente el “Grano” en el que está la información, es decir el nivel mínimo de detalle para el que se puede obtener una medida determinada o identificar determinado evento que ha ocurrido.
+    \item Efectuar un análisis y crear un modelo OLAP que especifique las tablas de dimensión y de hechos resultantes, de preferencia, planteada en una “Topología Estrella”. En este modelo de datos debe converger toda la información de las distintas fuentes identificadas.
+    \item Es conveniente se nombre las tablas con el prefijo adecuado según la naturaleza de cada tipo de tabla OLAP (DIM, FACT). Los nombres para las tablas DIM (dimensiones) deben acabar en singular y los nombres de las tablas FACT (hechos) en plural.
+    \item Es preciso crear llaves subrogadas para todas las dimensiones, es decir una nueva llave, un valor correlativo único diferente a la llave natural que viene del registro en el sistema fuente OLTP, que también se conserva.
+    \item En la tabla de hechos deben ir todos aquellos eventos o transacciones que ocurren, como ventas, pagos, compras, logs, etc.
+    \item Toda tabla del DWH debe contar con un timestamp o de registro que permita determinar en qué fecha, hora, minuto y segundo se creó determinado registro en la base de datos.
+    \item En cada dimensión se deben crear los registros default para los casos en que la información no esté disponible, no aplique o simplemente no exista y así poder distinguir estos escenarios en los hechos
+    \item Es necesario tener muy en consideración el cómo manejar los casos de Null, sugiriendo evaluar la siguientes alternativas.
+    \item Contar con una dimensión “Tiempo” con los pre-cálculos de fecha ya realizados y así ahorrarle esta tarea de procesamiento a quienes exploten la información del DWH. La dimensión tiempo podría tener la siguiente información:
+    
+    \begin{itemize}
+	\item Mes, año, día del mes.
+	\item La fecha competa incluyendo el nombre del día.
+	\item El nombre corto del día, el día de la semana en números.
+	\item El nombre corto correspondiente al día de la semana.
+	\item Flag fin de semana.
+	\item Flag si es laborable o no, es decir si son días en los cuales se trabaja.
+	\item El día del mes en número.
+	\item El día del año en número.
+	\item La semana del mes en número.
+	\item El nombre de la semana del mes.
+	\item La semana del año.
+	\item El número de días que tiene el mes.
+	\item La fecha del fin del mes.
+	\item El mes del año.
+	\item El nombre del mes del año.
+	\item El nombre corto del mes del año.
+	\item La combinación del año y el mes en números.
+	\item El trimestre del año al que corresponde una fecha.
+	\item El nombre del trimestre del año al que corresponde una fecha.
+	\item La fecha de finalización del trimestre.
+	\item El semestre del año al que corresponde una fecha.
+	\item Flag su es cierre de mes.
+    \end{itemize}
+\end{itemize}
 
 %-------------------------------------------------
 \subsection{ARQUITECTURA SEGUN KIMBALL}
