@@ -156,7 +156,90 @@ En cuanto a la estructura interna del DataWarehouse, para Inmon la prioridad es 
 			\end{figure}
 %-------------------------------------------------
 \subsection{METODOLOGIA SEGUN KIMBALL}	
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+La metodología se basa en lo que Kimball denomina Ciclo de Vida Dimensional del Negocio. Este ciclo de vida del proyecto de DW, está basado en cuatro principios básicos: 
+
+\begin{itemize}
+	\item Centrarse en el negocio: Hay que concentrarse en la identificación de los requerimientos del negocio y su valor asociado, y usar estos esfuerzos para desarrollar relaciones sólidas con el negocio, agudizando el análisis del mismo y la competencia consultiva de los implementadores. 
+	\item Construir una infraestructura de información adecuada: Diseñaruna base de información única, integrada, fácil de usar, de alto rendimiento donde se reflejará la amplia gama de requerimientos de negocio identificados en la empresa. 
+	\item Realizar entregas en incrementos significativos: crear el almacén de datos (DW) en incrementos entregables en plazos de 6 a 12 meses.
+	\item Ofrecer la solución completa: proporcionar todos los elementos necesarios para entregar valor a los usuarios de negocios. 
+\end{itemize}
+
+La construcción de una solución de DW/BI (Datawarehouse/Business Intelligence) es sumamente compleja, y Kimball nos propone una metodología que nos ayuda a simplificar esa complejidad. Las tareas de esta metodología (ciclo de vida) se muestranen la figura 1.
+
+				\begin{center}
+					\includegraphics[width=8cm]{./IMAGENES/img01}
+				\end{center}
+				
+Fig. 1: Tareas de la metodología de Kimball, denominada Business Dimensional Lifecycle 
+
+De la figura 1, podemos observar dos cuestiones. Primero, hay que resaltar el rol central de la tarea de definición de requerimientos. Los requerimientos del negocio son el soporte inicial de las tareas subsiguientes. También tiene influencia en el plan de proyecto (nótese la doble fecha entre la caja de definición de requerimientos y la de planificación). En segundo lugar podemos ver tres rutas o caminos que se enfocan en tres diferentes áreas:
+
+\begin{itemize}
+	\item Tecnología (Camino Superior). Implica tareas relacionadas con software específico, por ejemplo, Microsoft SQL Analysis Services.
+	\item Datos (Camino del medio). En la misma diseñaremos e implementaremos el modelo dimensional, y desarrollaremos el subsistema de Extracción, Transformación y Carga (Extract, Transformation, and Load - ETL) para cargar el DW.
+	\item Aplicaciones de Inteligencia de Negocios (Camino Inferior). En esta ruta se encuentran tareas en las que diseñamos y desarrollamos las aplicaciones de negocios para los usuarios finales.
+\end{itemize}
+
+Estas rutas se combinan cuando se instala finalmente el sistema.
+En la parte de debajo de la figura se muestra la actividad general de administración del proyecto. A continuación describiremos cada una de las tareas.
+
+4.4.1. Planificación
+
+En este proceso se determina el propósito del proyecto de DW/BI, sus objetivos específicos y el alcance del mismo, los principales riesgos y una aproximación inicial a las necesidades de información.
+En la visión de programas y proyectos de Kimball, Proyecto, se refiere a una iteración simple del KLC (Kimball Life Cycle), desde el lanzamiento hasta el despliegue.
+Esta tarea incluye las siguientes acciones típicas de un plan de proyecto:
+
+\begin{itemize}
+	\item Definir el alcance (entender los requerimientos del negocio.
+	\item Identificar las tareas.
+	\item Programar las tareas.
+	\item Planificar el uso de los recursos.
+	\item Asignar la carga de trabajo a los recursos
+	\item Elaboración de un documento final que representa un plan del proyecto.
+\end{itemize}
+Además en esta parte definimos cómo realizar la administración o gestión de esta subfase que es todo un proyecto en si mismo, con las siguientes actividades: 
+
+\begin{itemize}
+	\item Monitoreo del estado de los procesos y actividades.
+	\item Rastreo de problemas.
+	\item Desarrollo de un plan de comunicación comprensiva que direccione la empresa y las áreas de TI.
+\end{itemize}
+
+4.4.2. Análisis de requerimientos:
+La definición de los requerimientos es en gran medida un proceso de entrevistar al personal de negocio y técnico, pero siempre conviene tener un poco de preparación previa. Se debe aprender tanto como se pueda sobre el negocio, los competidores, la industria y los clientes del mismo. Hay que leer todos los informes posibles de la organización; rastrear los documentos de estrategia interna; entrevistar a los empleados, analizar lo que se dice en la prensa acerca de la organización, la competencia y la industria. Se deben conocer los términos y la terminología del negocio. 
+
+A partir de las entrevistas, podemos identificar temas analíticos y procesos de negocio. Los temas analíticos agrupan requerimientos
+comunes en un tema común (ver tabla 1).
+	            \begin{center}
+					\includegraphics[width=9cm]{./IMAGENES/img02}
+				\end{center}
+
+Por otra parte, a partir del análisis se puede construir una herramienta de la metodología denominada matriz de procesos/dimensiones.
+Una dimensión es una forma o vista o criterio por medio de cual se pueden sumariar, cruzar o cortar datos numéricos a analizar, datos que se denominan medidas.
+Esta matriz tiene en sus filas los procesos de negocio identificados,
+y en las columnas, las dimensiones identificadas.
+Un ejemplo de esta matriz se puede observar en la tabla 2. Cada X en la intersección de las filas y columnas significa que en el proceso de negocio de la fila seleccionada se identifican las dimensiones propuestas. 
+                 \begin{center}
+					\includegraphics[width=9cm]{./IMAGENES/img03}
+				\end{center}
+Finalmente se busca priorizar los requerimientos o procesos de negocios más críticos. 
+
+4.4.3. Modelado Dimensional
+La creación de un modelo dimensional es un proceso dinámico y altamente iterativo. Un esquema general se puede ver en la figura 2. 
+\begin{center}
+	\includegraphics[width=9cm]{./IMAGENES/img04}
+\end{center}
+
+El proceso de diseño comienza con un modelo dimensional de alto nivel obtenido a partir de los procesos priorizados de la matriz descrita en el punto anterior.
+El proceso iterativo consiste en cuatro pasos:
+
+\begin{itemize}
+	\item Elegir el proceso de negocio: El primer paso es elegir el área a modelizar. 
+    \item Establecer el nivel de granularidad: La granularidad significa especificar el nivel de detalle.
+    \item Elegir las dimensiones: Las dimensiones surgen naturalmente de las discusiones del equipo, y facilitadas por la elección del nivel de granularidad y de la matriz de procesos/dimensiones. 
+    \item Identificar medidas y las tablas de hechos: El último paso consiste en identificar las medidas que surgen de los procesos de negocios.
+\end{itemize}
 
 %-------------------------------------------------
 \subsection{IMPLEMENTACIONES DE KIMBALL}
