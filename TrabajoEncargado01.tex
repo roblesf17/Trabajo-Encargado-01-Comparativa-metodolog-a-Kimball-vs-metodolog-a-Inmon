@@ -80,47 +80,12 @@ El enfoque Inmon tambien se referencia normalmente como Top-down. Los datos son 
 
 
 %-------------------------------------------------
-
-\subsection{IMPLEMENTACIONES DE  INMON}
-\begin{itemize}
-	\item Descomposición funcional
-	\item Diagrama de contexto
-	\item Diagrama de flujo de datos
-	\item Diagrama de transición de estados
-	\item Pseudocódigo
-\end{itemize}
-
-	c. Modelo de datos. Se trabaja con 2 tipos de modelos:
-		\begin{itemize}
-			\item El Modelo de datos nos muestra los datos primitivos, tomando en cuenta el elemento tiempo, se plasman los cálculos que se realicen y finalmente se muestran sus relaciones.
-		\end{itemize}
-
-El Modelo de Datos del Data Warehouse. Los modelos anteriores nos deberán entregar la definición de los sujetos a los que estará orientado el Data Warehouse. Debe venir en 3 perspectivas y son explicadas en la siguiente tabla:
-
-
-	d. Una vez que se tiene conocimiento de este modelo se deben tomar ciertas decisiones sobre el diseño del Data Warehouse. Entre estas decisiones tenemos las siguientes:
-		\begin{itemize}
-			\item Normalización, debemos decidir el grado al que nuestro Data Warehouse
-			\item Granularidad
-			\item Particiones
-			\item  Minería de Datos
-		\end{itemize}
-
-	e. Al haber tomado estas decisiones, se debe generar un documento que contenga estas decisiones que hemos tomado para la definición del Data Warehouse. Este documento debe contener un concepto de Data Warehouse, una descripción de los sistemas que lo alimentan, como se debe usar el Data Warehouse, como obtener ayuda, responsables, plan de migración, mapeo de datos entre los datos operacionales y el data Warehouse, etc.
-
-	f. Metadata. Contiene información sobre nuestro Data Warehouse. En pocas palabras es un diccionario de datos. Es pieza clave para el mejor aprovechamiento del Data Warehouse. Facilita las tareas de análisis ya que funciona como un índice del contenido del Data Warehouse.
-
-2. Integración de datos. Implica el implementar procesos ETL que nos permitan extraer la información de los ambientes transacciones para cargarlo dentro del Data Warehouse. Esto puede implicar un cambio en la tecnología, selección de los datos que residirán en el Data Warehouse, cambios de llaves en los objetos, formato de los datos, sumarizaciones, estandarización de nomenclaturas.
-
-3. Pruebas. Se hacen pruebas al respecto de la implementación del Data Warehouse. Se realizan los ajustes necesarios para poder obtener los resultados esperados en nuestro Data Warehouse.
-
-4. Programación. Se hacen las programaciones necesarias para que se ejecuten ciertos procesos, para que exista la posibilidad de paralelismo, se administra la Meta Data, índices, particiones, monitoreo, etc.
-
-5. Diseño DSS. Se trabaja sobre un esquema multidimensional para poder generar la información que realmente soporte la toma de decisiones.
-
-6. Análisis. El tomador de decisiones analiza la información obtenida a partir del DSS.
-
-7. Requerimientos. A partir del análisis de los datos obtenidos el tomador de decisiones llegue al entendimiento de los requerimientos que tiene su negocio para mejorar. A grandes rasgos esta es la metodología que Bill Inmon propone y que forma parte del marco de referencia de este trabajo de investigación.
+%https://blog.bi-geek.com/arquitectura-enfoque-de-william-h-inmon/
+\subsection{EL ENFOQUE DE INMON}
+Para ir adentrándonos poco a poco en sus principales diferencias y poder llegar a determinar qué opción es la más adecuada en nuestros proyectos, en esta entrada expondré las características más destacadas del enfoque de Inmon.
+Para él, un DataWarehouse ha de entenderse como un almacén de datos único y global para toda la empresa.
+\\
+En este modelo, la premisa es que la información se almacene al máximo nivel de detalle (garantizando la futura exploración de los datos), permaneciendo invariable y no volátil, de manera que los cambios que sufran los datos a lo largo del tiempo queden registrados sin que puedan modificarse o eliminarse.
 
 %-------------------------------------------------
 \subsection{ARQUITECTURA SEGUN INMON}
@@ -130,21 +95,10 @@ El Modelo de Datos del Data Warehouse. Los modelos anteriores nos deberán entre
 				\end{center}
 			\end{figure}
 
-La arquitectura que plantea Bill Inmon consta de las siguientes partes: \cite{robles1}
+Estas son las claves fundamentales de la arquitectura defendida por Inmon, conocida como ‘Corporate Information Factory (CIF)’, donde el DataWarehouse centraliza todos los datos de la compañía para alimentar, a continuación, pequeños DataMarts temáticos, que serán los puntos de acceso para las herramientas de reporting. En este sentido, cada departamento tendrá su propio DataMart, abastecido con la información del DataWarehouse, listo para su análisis y explotación.
+ \cite{robles1}
 
-\begin{itemize}
-		\item Fuente de la Información: Inicia el proceso de creación de un DW, conociendo la información que se necesita de todas las herramientas de las que se tengan acceso, ir a las necesidades de información que se necesitan con la finalidad de un resultado para crear un DW.
-
-		\item Data Warehouse: La necesidad de normalizar toda la información extraída para ser almacenada en un DW, los cuales serán procesados y consultados por un DM.
-		\item Data Marts: Se crean un subconjunto de los datos de un DW con el objetivo de responder a un determinado análisis o necesidad de una población, de un departamento en específico.
-		\item Explotación de los datos: Se refiere a la manera de presentación de la información para ser consultada y analizada por las áreas. En cuanto a la arquitectura interna de un DW, Bill Inmon considera las siguientes características:
-
-			\begin{itemize}
-				\item Normalización: el DW debe ser basado y diseñado, conforme al diseño de las bases de datos transaccionales con las que se esté interactuando.
-				\item Tercera Forma normal: la prioridad es que el modelo de datos esté construido en TFN con lo cual se tenga mayor relación entre los objetos de la base de datos.
-			\end{itemize}
-
-\end{itemize}
+Este enfoque de Inmon suele denominarse como una metodología de trabajo ‘Top-Down’, ya que se centra primero en una visión global de la compañía, para ir desmembrándola en pequeños sets de datos departamentales. Así, con esta arquitectura, todos los DataMarts de la organización están conectados al DataWarehouse, evitándose la aparición de incongruencias y anomalías al comparar los datos entre distintos departamentos.
 
 \subsection{La estructura del DataWarehouse}	
 En cuanto a la estructura interna del DataWarehouse, para Inmon la prioridad es que el modelo de datos esté construido en tercera forma normal. Por dar una breve explicación de lo que esto significa, el proceso de normalización consiste en aplicar una serie de reglas o normas a la hora de establecer las relaciones entre los diferentes objetos dentro de la base de datos. Con este proceso de normalización se consiguen muchos beneficios, como evitar la redundancia de los datos, mantener su integridad referencial, facilitar el mantenimiento de las tablas y disminuir el tamaño de la base de datos. Sin embargo, a diferencia de los DataWarehouse desnormalizados, las consultas exigen el empleo de queries mucho más complejas, lo que dificulta el análisis directo de la información y el uso de las herramientas de reporting. De ahí, la necesidad de construir los DataMarts que, como ya comenté, están basados en modelos dimensionales de estrella o copo de nieve, diseños fácilmente explotables por estas herramientas de análisis de datos.\cite{estrella3}
