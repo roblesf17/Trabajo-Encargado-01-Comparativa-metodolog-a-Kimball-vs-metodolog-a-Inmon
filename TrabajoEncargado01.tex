@@ -147,7 +147,7 @@ La arquitectura que plantea Bill Inmon consta de las siguientes partes: \cite{ro
 \end{itemize}
 
 \subsection{La estructura del DataWarehouse}	
-En cuanto a la estructura interna del DataWarehouse, para Inmon la prioridad es que el modelo de datos esté construido en tercera forma normal. Por dar una breve explicación de lo que esto significa, el proceso de normalización consiste en aplicar una serie de reglas o normas a la hora de establecer las relaciones entre los diferentes objetos dentro de la base de datos. Con este proceso de normalización se consiguen muchos beneficios, como evitar la redundancia de los datos, mantener su integridad referencial, facilitar el mantenimiento de las tablas y disminuir el tamaño de la base de datos. Sin embargo, a diferencia de los DataWarehouse desnormalizados, las consultas exigen el empleo de queries mucho más complejas, lo que dificulta el análisis directo de la información y el uso de las herramientas de reporting. De ahí, la necesidad de construir los DataMarts que, como ya comenté, están basados en modelos dimensionales de estrella o copo de nieve, diseños fácilmente explotables por estas herramientas de análisis de datos.\cite{aquino}
+En cuanto a la estructura interna del DataWarehouse, para Inmon la prioridad es que el modelo de datos esté construido en tercera forma normal. Por dar una breve explicación de lo que esto significa, el proceso de normalización consiste en aplicar una serie de reglas o normas a la hora de establecer las relaciones entre los diferentes objetos dentro de la base de datos. Con este proceso de normalización se consiguen muchos beneficios, como evitar la redundancia de los datos, mantener su integridad referencial, facilitar el mantenimiento de las tablas y disminuir el tamaño de la base de datos. Sin embargo, a diferencia de los DataWarehouse desnormalizados, las consultas exigen el empleo de queries mucho más complejas, lo que dificulta el análisis directo de la información y el uso de las herramientas de reporting. De ahí, la necesidad de construir los DataMarts que, como ya comenté, están basados en modelos dimensionales de estrella o copo de nieve, diseños fácilmente explotables por estas herramientas de análisis de datos.\cite{estrella3}
 
 			\begin{figure}[htb]
 				\begin{center}
@@ -182,7 +182,7 @@ De la figura 1, podemos observar dos cuestiones. Primero, hay que resaltar el ro
 \end{itemize}
 
 Estas rutas se combinan cuando se instala finalmente el sistema.
-En la parte de debajo de la figura se muestra la actividad general de administración del proyecto. A continuación describiremos cada una de las tareas.
+En la parte de debajo de la figura se muestra la actividad general de administración del proyecto. A continuación describiremos cada una de las tareas.\cite{estrella7}
 
 4.4.1. Planificación
 
@@ -207,7 +207,7 @@ Además en esta parte definimos cómo realizar la administración o gestión de 
 \end{itemize}
 
 4.4.2. Análisis de requerimientos:
-La definición de los requerimientos es en gran medida un proceso de entrevistar al personal de negocio y técnico, pero siempre conviene tener un poco de preparación previa. Se debe aprender tanto como se pueda sobre el negocio, los competidores, la industria y los clientes del mismo. Hay que leer todos los informes posibles de la organización; rastrear los documentos de estrategia interna; entrevistar a los empleados, analizar lo que se dice en la prensa acerca de la organización, la competencia y la industria. Se deben conocer los términos y la terminología del negocio. 
+La definición de los requerimientos es en gran medida un proceso de entrevistar al personal de negocio y técnico, pero siempre conviene tener un poco de preparación previa. Se debe aprender tanto como se pueda sobre el negocio, los competidores, la industria y los clientes del mismo. Hay que leer todos los informes posibles de la organización; rastrear los documentos de estrategia interna; entrevistar a los empleados, analizar lo que se dice en la prensa acerca de la organización, la competencia y la industria. Se deben conocer los términos y la terminología del negocio. \cite{estrella5}
 
 A partir de las entrevistas, podemos identificar temas analíticos y procesos de negocio. Los temas analíticos agrupan requerimientos
 comunes en un tema común (ver tabla 1).
@@ -216,7 +216,7 @@ comunes en un tema común (ver tabla 1).
 				\end{center}
 
 Por otra parte, a partir del análisis se puede construir una herramienta de la metodología denominada matriz de procesos/dimensiones.
-Una dimensión es una forma o vista o criterio por medio de cual se pueden sumariar, cruzar o cortar datos numéricos a analizar, datos que se denominan medidas.
+Una dimensión es una forma o vista o criterio por medio de cual se pueden sumariar, cruzar o cortar datos numéricos a analizar, datos que se denominan medidas.\cite{estrella8}
 Esta matriz tiene en sus filas los procesos de negocio identificados,
 y en las columnas, las dimensiones identificadas.
 Un ejemplo de esta matriz se puede observar en la tabla 2. Cada X en la intersección de las filas y columnas significa que en el proceso de negocio de la fila seleccionada se identifican las dimensiones propuestas. 
@@ -247,11 +247,11 @@ El proceso iterativo consiste en cuatro pasos:
 Implementación Datawarehouse con Metodología Kimball
 La inteligencia de negocios (BI) es un conjunto de metodologías, aplicaciones y tecnologías que aporta a empresas y organizaciones información privilegiada y debidamente estructurada, que sirve de soporte a la toma de decisiones.
 
-Permite obtener datos relacionados con las alternativas de ingreso a nuevos mercados, ofertas de productos, eliminación de islas de información, controles financieros, optimización de costos, planificación de la producción , análisis de perfiles de clientes, rentabilidad de un producto, etc., para analizarlos y convertirlos en conocimiento.
+Permite obtener datos relacionados con las alternativas de ingreso a nuevos mercados, ofertas de productos, eliminación de islas de información, controles financieros, optimización de costos, planificación de la producción , análisis de perfiles de clientes, rentabilidad de un producto, etc., para analizarlos y convertirlos en conocimiento.\cite{estrella4}
 
 En la práctica, la inteligencia de negocios es un factor determinante para el éxito y su implementación  no sería nada fácil, si no contáramos con un instrumento como la Metodología Kimball, para la construcción de un almacén de datos (Datawarehouse)  circunscrito al ámbito de la empresa, de manera integrada y permanente (pero variable) en el tiempo.
 
-Producto de nuestra experiencia en el diseño de Datamart (base de datos departamentales) para un sistema de datawarehouse basado en la Metodología Kimball, hemos rescatado y exponemos en el  siguiente artículo algunos apuntes y sugerencias que consideramos de relevancia para aquellos que deseen implementar o explorar soluciones de esta naturaleza:
+Producto de nuestra experiencia en el diseño de Datamart (base de datos departamentales) para un sistema de datawarehouse basado en la Metodología Kimball, hemos rescatado y exponemos en el  siguiente artículo algunos apuntes y sugerencias que consideramos de relevancia para aquellos que deseen implementar o explorar soluciones de esta naturaleza:\cite{estrella6}
 
 \begin{itemize}
 	\item Una vez seleccionado el proceso al que se va a diseñar una solución OLAP (base de datos orientada al procesamiento analítico) es necesario efectuar un análisis y crear un diagrama OLTP (base de datos orientada al procesamiento de transacciones) de cada modelo implicado.
