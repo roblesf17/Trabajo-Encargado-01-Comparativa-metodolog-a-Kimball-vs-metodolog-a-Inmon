@@ -308,25 +308,33 @@ El esquema de arquitectura en base a los fundamentos de Ralph Kimball sería el 
 
 %-------------------------------------------------
 
-\subsection{COMPARACION DE METODOLOGIAS}	
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-%-----------------------------------------------------------------
-\section{Análisis}
+\subsection{COMPARACIÓN DE METODOLOGIAS}	
 
 \begin{itemize}
-\item xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
-\item xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+\item Mientras Kimball utiliza modelos dimensionales para los datos, Inmon utiliza modelos dimensionales solo para los marts de datos. Ahora desde una perspectiva arquitectónica, Kimball propone que no es necesario separar los data marts del almacén de datos dimensionales existente. Mientras que en el caso de Inmon, se utiliza los data marts derivados de los data warehouse para separarlos físicamente del data warehouse como unidades separadas.
+\item Con el enfoque de Kimball, esté puede identificar el proceso comercial clave y las soluciones comerciales posteriores que se deben proporcionar con el almacén de datos. Mientras que el enfoque de Inmon cree en la construcción de un almacén de datos con el modelo de datos corporativos.
+\item El enfoque de Kimball utiliza modelos dimensionales como el esquema de estrella y copo de nieve con el fin de organizar los datos en varios datos clasificados de negocios, a fin de habilitar rápidamente los procesos de negocios. Inmon, por otro lado, considera el requisito general de datos corporativos y, como tal, utiliza la técnica de modelado ER. 
+\item Kimball se centra en proporcionar sistemas analíticos a los que se pueda acceder directamente desde el almacén de datos. Mientras que en el caso de Inmon, la arquitectura está diseñada de tal manera que el sistema analítico solo puede acceder a los datos del almacén de datos a través de los data marts.
+\item Inmon trabaja con el modelo de datos normalizado, mientras que Kimball prefiere el modelo de datos desnormalizado y, como tal, se encuentran modelos de datos redundantes presentes en la arquitectura de Kimball. El diseño y la arquitectura de Inmon pueden ser complejos, pero los almacenes de datos basados en Kimball son más fáciles de diseñar e implementar.
+\item Los recursos involucrados necesitan saber cómo trabajar con el modelado ER, sin la necesidad de desacoplarlos en varios mercados de datos. Se necesita la integración de datos en toda la empresa con el almacén de datos basado en Inmon. Mientras que con el almacén de datos basado en Kimball, el requisito de integración de datos se centra en el área comercial individual.\cite{torres}
 \end{itemize}
+
 %-----------------------------------------------------------------
 \section{Conclusiones}
 
 \begin{itemize}
-\item xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
-\item xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
-
+\item Mantener un almacen de datos basado en Inmmon es fácil debido a que se puede desacoplar las tareas de mantenimiento en diversas actividades de mamtenimiento de data mart. En el caso del diseño basado en la metodología de Kimball, referente al mantenimiento es dificil porque puede hacer datos redundantes.
+\item La implementación de un almacen de datos basados en Inmmon puede generar altos costos iniciales. Kimball, por otro lado, incurre en un bajo costo inicial y el costo sigue siendo el mismo para las fases posteriores.
+\item Kimball requiere un equipo generalista para implementar esta metodología, pero cuando se implementa un almacen de datos basado en Inmon, se necesita un equipo especializado.
 \end{itemize}
 
+%-----------------------------------------------------------------
+\section{Recomendaciones}
+
+\begin{itemize}
+\item La metodología Kimbal utiliza una implementación de una cantidad de tiempo relativamente menor,  mientras que Inmmon es un método que lleva bastante tiempo implementarlo.
+\item Se debe tener en cuenta que los almacenes de datos que estan basados en Kimball se puede configurar de una manera rapida, pero la arquitectura de almacen de datos que se encuentra basada en Inmon requiere un tiempo mayor de inicio.
+\end{itemize}
 
 % Bibliografia.
 %-----------------------------------------------------------------
